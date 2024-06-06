@@ -1,0 +1,1072 @@
+{
+	"info": {
+		"_postman_id": "ae73ba88-7ca1-4d1e-8edd-96247648a3b8",
+		"name": "VetClinic API",
+		"description": "**Introducción**:  \nEn una clínica veterinaria, la gestión eficiente de la información es crucial para ofrecer un servicio de calidad a los clientes y sus mascotas. Actualmente, muchas clínicas veterinarias aún utilizan métodos manuales o sistemas fragmentados para gestionar la información de sus pacientes (Excel), lo que puede llevar a errores y pérdida de datos importantes. Es necesario un sistema centralizado y automatizado que permita gestionar la información de manera eficiente y segura.\n\n**Objetivo**:  \nDesarrollar servicios web que permitan gestionar de manera integral la información de una clínica veterinaria, incluyendo la administración de mascotas, dueños, veterinarios y citas. Este sistema debe facilitar el almacenamiento, consulta y actualización de datos, así como mantener la integridad de las relaciones entre las diferentes entidades.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32236449"
+	},
+	"item": [
+		{
+			"name": "Vets",
+			"item": [
+				{
+					"name": "HU-9. Listar Veterinario",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5289/api/vets",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5289",
+							"path": [
+								"api",
+								"vets"
+							]
+						},
+						"description": "ver la lista de todos los veterinarios\n\n**CRITERIO DE ACEPTACIÓN**\n\nDevuelva una lista de todos los veterinarios. La respuesta debe incluir los detalles de cada veterinario (ID, Name,Phone,Address, email)."
+					},
+					"response": [
+						{
+							"name": "HU-9. Listar Veterinario",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5289/api/vets",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5289",
+									"path": [
+										"api",
+										"vets"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 06 Jun 2024 22:43:02 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"name\": \"Maria Alejandra\",\n        \"phone\": \"30030030000\",\n        \"address\": \"Cl 15 #43-54\",\n        \"email\": \"marialeja@gmail.com\"\n    },\n    {\n        \"id\": 2,\n        \"name\": \"Francisco Calle\",\n        \"phone\": \"3213213214\",\n        \"address\": \"CCircular 5ta.\",\n        \"email\": \"francalle@gmail.com\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "HU-10. Detalle Veterinario",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5289/api/vets/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5289",
+							"path": [
+								"api",
+								"vets",
+								"1"
+							]
+						},
+						"description": "ver los detalles de un veterinario específico\n\n**CRITERIO DE ACEPTACIÓN**\n\nDevuelva los detalles de un veterinario específico. La respuesta debe incluir todos los detalles del veterinario correspondiente al ID proporcionado."
+					},
+					"response": [
+						{
+							"name": "HU-10. Detalle Veterinario",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5289/api/vets/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5289",
+									"path": [
+										"api",
+										"vets",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 06 Jun 2024 22:43:48 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"name\": \"Maria Alejandra\",\n    \"phone\": \"30030030000\",\n    \"address\": \"Cl 15 #43-54\",\n    \"email\": \"marialeja@gmail.com\"\n}"
+						}
+					]
+				}
+			],
+			"description": "Servicios EndPoint Rest API de Veterinarios"
+		},
+		{
+			"name": "Pets",
+			"item": [
+				{
+					"name": "HU-1. Listar Mascotas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5289/api/pets",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5289",
+							"path": [
+								"api",
+								"pets"
+							]
+						},
+						"description": "ver la lista de todas las mascotas\n\n**CRITERIO DE ACEPTACIÓN**\n\nLista de todas las mascotas registradas. La respuesta debe incluir los detalles de cada mascota (Id, Name, Specie, Race, DateBirth, OwnerId)."
+					},
+					"response": [
+						{
+							"name": "Listar Mascotas",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5289/api/pets",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5289",
+									"path": [
+										"api",
+										"pets"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 06 Jun 2024 22:44:38 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"name\": \"Luna\",\n        \"specie\": \"Cat\",\n        \"race\": \"None\",\n        \"dateBirth\": \"2020-12-12T00:00:00\",\n        \"ownerId\": 2,\n        \"owner\": {\n            \"id\": 2,\n            \"names\": \"Maria\",\n            \"lastNames\": \"Camila\",\n            \"email\": \"mc@hotmail.com\",\n            \"address\": \"En Robledo\",\n            \"phone\": \"18003215445\"\n        },\n        \"photo\": \"luna-carino.jpg\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "HU-3. Detalle Mascota",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5289/api/pets/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5289",
+							"path": [
+								"api",
+								"pets",
+								"1"
+							]
+						},
+						"description": "ver los detalles de una mascota específica\n\n**CRITERIO DE ACEPTACIÓN**\n\nDevuelva los detalles de una mascota específica. La respuesta debe incluir todos los detalles de la mascota correspondiente al ID proporcionado."
+					},
+					"response": [
+						{
+							"name": "Detalle Mascota",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5289/api/pets/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5289",
+									"path": [
+										"api",
+										"pets",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 06 Jun 2024 22:45:08 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"name\": \"Luna\",\n    \"specie\": \"Cat\",\n    \"race\": \"None\",\n    \"dateBirth\": \"2020-12-12T00:00:00\",\n    \"ownerId\": 2,\n    \"owner\": {\n        \"id\": 2,\n        \"names\": \"Maria\",\n        \"lastNames\": \"Camila\",\n        \"email\": \"mc@hotmail.com\",\n        \"address\": \"En Robledo\",\n        \"phone\": \"18003215445\"\n    },\n    \"photo\": \"luna-carino.jpg\"\n}"
+						}
+					]
+				},
+				{
+					"name": "HU-2. Crear Mascota",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"description": "Registrar una nueva mascota en el sistema\n\n**CRITERIO DE ACEPTACIÓN**\n\nPermita registrar una nueva mascota. La solicitud debe incluir los detalles de la mascota (Name, Specie, Race, DateBirth, OwnerId). La respuesta debe incluir la confirmación y los detalles de la mascota creada"
+					},
+					"response": [
+						{
+							"name": "Crear Mascota",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5289/api/pets?Name=Cantinflas&Specie=Dog&Race=American&DateBirth=2018-05-05&OwnerId=2&Photo=cantinflas.jpg",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5289",
+									"path": [
+										"api",
+										"pets"
+									],
+									"query": [
+										{
+											"key": "Name",
+											"value": "Cantinflas"
+										},
+										{
+											"key": "Specie",
+											"value": "Dog"
+										},
+										{
+											"key": "Race",
+											"value": "American"
+										},
+										{
+											"key": "DateBirth",
+											"value": "2018-05-05"
+										},
+										{
+											"key": "OwnerId",
+											"value": "2"
+										},
+										{
+											"key": "Photo",
+											"value": "cantinflas.jpg"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 06 Jun 2024 23:15:16 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"New pet created 🥰\"\n}"
+						}
+					]
+				},
+				{
+					"name": "HU-4. Actualizar Mascota",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"description": "actualizar la información de una mascota específica.\n\n**CRITERIO DE ACEPTACIÓN**\n\nPermita actualizar la información de una mascota específica. La solicitud debe incluir los campos que se desean actualizar. La respuesta debe confirmar la actualización de la mascota."
+					},
+					"response": []
+				}
+			],
+			"description": "Servicios EndPoint Rest API de Mascotas"
+		},
+		{
+			"name": "Quotes",
+			"item": [
+				{
+					"name": "HU-11. Listar Citas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5289/api/quotes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5289",
+							"path": [
+								"api",
+								"quotes"
+							]
+						},
+						"description": "ver la lista de todas las citas programadas\n\n**CRITERIO DE ACEPTACIÓN**\n\nDevuelva una lista de todas las citas programadas. La respuesta debe incluir los detalles de cada cita (Id, Date, PetId, VetId, Description)."
+					},
+					"response": [
+						{
+							"name": "HU-11. Listar Citas",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5289/api/quotes",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5289",
+									"path": [
+										"api",
+										"quotes"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 06 Jun 2024 22:45:36 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"date\": \"2025-01-01T00:00:00\",\n        \"petId\": 1,\n        \"vetId\": 1,\n        \"description\": \"holaaaaaaa\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "HU-13. Detalle Cita",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5289/api/quotes/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5289",
+							"path": [
+								"api",
+								"quotes",
+								"1"
+							]
+						},
+						"description": "ver los detalles de una cita específica\n\n**CRITERIO DE ACEPTACIÓN**\n\nDevuelva los detalles de una cita específica. La respuesta debe incluir todos los detalles de la cita correspondiente al ID proporcionado."
+					},
+					"response": [
+						{
+							"name": "HU-13. Detalle Cita",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5289/api/quotes/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5289",
+									"path": [
+										"api",
+										"quotes",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 06 Jun 2024 22:45:51 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"date\": \"2025-01-01T00:00:00\",\n    \"petId\": 1,\n    \"vetId\": 1,\n    \"description\": \"holaaaaaaa\"\n}"
+						}
+					]
+				},
+				{
+					"name": "HU-12. Programar Cita",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"description": "programar una nueva cita en el sistema\n\n**CRITERIO DE ACEPTACIÓN**\n\nPermita programar una nueva cita. La solicitud debe incluir los detalles de la cita (Date, PetId, VetId, Description). La respuesta debe incluir la confirmación y los detalles de la cita programada.\n\nSe debe enviar un correo electronico al dueño de la mascota en donde se detalla (Fecha y hora de la cita)"
+					},
+					"response": [
+						{
+							"name": "HU-12. Programar Cita",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5289/api/quotes?Date=2024-08-08&PetId=1&VetId=1&Description=Cita%20para%20revision%20odontologica",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5289",
+									"path": [
+										"api",
+										"quotes"
+									],
+									"query": [
+										{
+											"key": "Date",
+											"value": "2024-08-08"
+										},
+										{
+											"key": "PetId",
+											"value": "1"
+										},
+										{
+											"key": "VetId",
+											"value": "1"
+										},
+										{
+											"key": "Description",
+											"value": "Cita%20para%20revision%20odontologica"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 06 Jun 2024 23:11:20 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"New quote and email sended\"\n}"
+						}
+					]
+				},
+				{
+					"name": "HU-14. Actualizar Cita",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"description": "actualizar la información de una cita específica.\n\n**CRITERIO DE ACEPTACIÓN**\n\nPermita actualizar la información de una cita específica. La solicitud debe incluir los campos que se desean actualizar. La respuesta debe confirmar la actualización de la cita."
+					},
+					"response": []
+				}
+			],
+			"description": "Servicios EndPoint Rest API de Citas"
+		},
+		{
+			"name": "Owners",
+			"item": [
+				{
+					"name": "HU-5. Listar Dueños",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5289/api/owners",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5289",
+							"path": [
+								"api",
+								"owners"
+							]
+						},
+						"description": "ver la lista de todos los dueños\n\n**CRITERIO DE ACEPTACIÓN**\n\nDevuelva una lista de todos los dueños. La respuesta debe incluir los detalles de cada dueño (ID, nombre, dirección, teléfono, email)."
+					},
+					"response": [
+						{
+							"name": "HU-5. Listar Dueños",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5289/api/owners",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5289",
+									"path": [
+										"api",
+										"owners"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 06 Jun 2024 22:46:45 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"names\": \"Carlos\",\n        \"lastNames\": \"Jaramillo\",\n        \"email\": \"CJ@gmail.com\",\n        \"address\": \"dsa\",\n        \"phone\": \"321321\"\n    },\n    {\n        \"id\": 2,\n        \"names\": \"Maria\",\n        \"lastNames\": \"Camila\",\n        \"email\": \"mc@hotmail.com\",\n        \"address\": \"En Robledo\",\n        \"phone\": \"18003215445\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "HU-7. Detalle Dueño",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5289/api/owners/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5289",
+							"path": [
+								"api",
+								"owners",
+								"2"
+							]
+						},
+						"description": "ver los detalles de un dueño específico\n\n**CRITERIO DE ACEPTACIÓN**\n\nDevuelva los detalles de un dueño específico. La respuesta debe incluir todos los detalles del dueño correspondiente al ID proporcionado."
+					},
+					"response": [
+						{
+							"name": "HU-7. Detalle Dueño",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5289/api/owners/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5289",
+									"path": [
+										"api",
+										"owners",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 06 Jun 2024 22:47:03 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 2,\n    \"names\": \"Maria\",\n    \"lastNames\": \"Camila\",\n    \"email\": \"mc@hotmail.com\",\n    \"address\": \"En Robledo\",\n    \"phone\": \"18003215445\"\n}"
+						}
+					]
+				},
+				{
+					"name": "HU-6. Crear Dueño",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"description": "registrar un nuevo dueño en el sistema.\n\n**CRITERIO DE ACEPTACIÓN**\n\nPermita registrar un nuevo dueño. La solicitud debe incluir los detalles del dueño (Name, Address, Phone, Email). La respuesta debe incluir la confirmación y los detalles del dueño creado."
+					},
+					"response": []
+				},
+				{
+					"name": "HU-8. Actualizar Dueño",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"description": "actualizar la información de un dueño específico\n\n**CRITERIO DE ACEPTACIÓN**\n\nPermita actualizar la información de un dueño específico. La solicitud debe incluir los campos que se desean actualizar. La respuesta debe confirmar la actualización del dueño."
+					},
+					"response": []
+				}
+			],
+			"description": "Servicios EndPoint Rest API de Dueños"
+		},
+		{
+			"name": "Middle EndPoints",
+			"item": [
+				{
+					"name": "HU-15. Listar Citas en Fecha Especifica",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5289/api/quotes/2025-01-01/date",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5289",
+							"path": [
+								"api",
+								"quotes",
+								"2025-01-01",
+								"date"
+							]
+						},
+						"description": "ver la lista de citas que estan agendadas para una fecha en especifico\n\n**CRITERIO DE ACEPTACIÓN**\n\nDevuelva una lista de todas las citas programadas para una fecha en especifica"
+					},
+					"response": [
+						{
+							"name": "HU-15. Listar Citas en Fecha Especifica",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5289/api/quotes/25-01-01/date",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5289",
+									"path": [
+										"api",
+										"quotes",
+										"25-01-01",
+										"date"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 06 Jun 2024 22:50:02 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"date\": \"2025-01-01T00:00:00\",\n        \"petId\": 1,\n        \"vetId\": 1,\n        \"description\": \"holaaaaaaa\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "HU-16. Listar Mascotas de un Dueño",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"description": "ver la lista de las mascotas que tiene una persona\n\n**CRITERIO DE ACEPTACIÓN**\n\ndevuelva una lista con todas las mascotas que pertencen a una persona"
+					},
+					"response": [
+						{
+							"name": "HU-16. Listar Mascotas de un Dueño",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5289/api/pets/1/owner",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5289",
+									"path": [
+										"api",
+										"pets",
+										"1",
+										"owner"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 06 Jun 2024 22:50:43 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "You have no pets  at your name in the system"
+						},
+						{
+							"name": "HU-16. Listar Mascotas de un Dueño",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5289/api/pets/2/owner",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5289",
+									"path": [
+										"api",
+										"pets",
+										"2",
+										"owner"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 06 Jun 2024 22:51:07 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"nameOwner\": \"Maria\",\n        \"emailOwner\": \"mc@hotmail.com\",\n        \"namePet\": \"Luna\",\n        \"speciePet\": \"Cat\",\n        \"racePet\": \"None\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "HU-17. Listar Citas de un Veterinario",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"description": "ver el listado de citas que tiene un veterinario\n\n**CRITERIO DE ACEPTACIÓN**\n\nDevuelva una lista con todas las citas asociadas a un veterianrio"
+					},
+					"response": [
+						{
+							"name": "HU-17. id=1",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5289/api/quotes/1/vets",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5289",
+									"path": [
+										"api",
+										"quotes",
+										"1",
+										"vets"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 06 Jun 2024 22:51:37 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"nameVet\": \"Maria Alejandra\",\n        \"emailVet\": \"marialeja@gmail.com\",\n        \"dateQuote\": \"2025-01-01T00:00:00\",\n        \"descriptionQuote\": \"holaaaaaaa\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "HU-18. Listar Mascota por BirthDay",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"description": "ver la lista de mascotas y sus dueños para enviarles promociones y mensajes de felicitacion\n\n**CRITERIO DE ACEPTACIÓN**\n\nDevuelva la lista de mascotas que cumplan años ese dia y la informacion de los dueños."
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5289/api/pets/{dateBirth}/birthday",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5289",
+									"path": [
+										"api",
+										"pets",
+										"{dateBirth}",
+										"birthday"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 06 Jun 2024 22:54:48 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "You have no pets to your name"
+						},
+						{
+							"name": "HU-18. Listar Mascota por BirthDay",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5289/api/pets/2020-12-12/birthday",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5289",
+									"path": [
+										"api",
+										"pets",
+										"2020-12-12",
+										"birthday"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 06 Jun 2024 22:55:45 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"namePet\": \"Luna\",\n        \"nameOwner\": \"Maria\",\n        \"emailOwner\": \"mc@hotmail.com\",\n        \"phoneOwner\": \"18003215445\"\n    }\n]"
+						}
+					]
+				}
+			],
+			"description": "EndPoints Medios con tareas especificas sobre las entidades"
+		}
+	]
+}
